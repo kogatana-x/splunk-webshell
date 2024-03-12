@@ -35,7 +35,7 @@ Splunk.Module.WCIFrameInclude = $.klass(Splunk.Module, {
      * Bind load event listener normalizer. The load event in IFrame elements is not normal.
      */
     bindLoadListener: function(){
-        this.iframe.load(
+        this.iframe.on('load',
             function(){
                 setTimeout(this.onLoad.bind(this), this.ONLOAD_TIMEOUT);//required for safari/opera css attributes to be reflected in DOM
             }.bind(this)

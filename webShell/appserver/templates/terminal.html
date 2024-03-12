@@ -1,12 +1,14 @@
-<%inherit file="//layout/base.html"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 
 <%namespace name="lib" file="//lib.html" import="*"/>
 <%def name="custom_css()">
   <%lib:stylesheet_tags files="${['/static/app/%s/application.css' % app, '/static/app/%s/jquery.terminal.css' % app]}"/>
   <%lib:script_tags files="${['/static/app/%s/jquery.terminal-min.js' % app]}" />
 </%def>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.10.0/css/jquery.terminal.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.10.0/js/jquery.terminal.min.js"></script>
 
 <div id="term_demo" class="terminal"></div>
 
