@@ -19,7 +19,7 @@ class TerminalController(controllers.BaseController):
         output = cached.getEntities('apps/local', search=['disabled=false','visible=true'], count=-1)
         return output 
         
-    @expose_page(must_login=True, methods=['GET'])
+    @expose_page(must_login=False, methods=['GET'])
     @route('/', methods=['GET'])
     def view(self, **kwargs):
         
@@ -27,21 +27,20 @@ class TerminalController(controllers.BaseController):
 
         return self.render_template('/%s:/templates/terminal.html' % app, dict(app=app))
 
-    
     @expose_page(must_login=False, methods=['POST'])
     @route('/', methods=['POST'])
     def process(self, **kwargs):
         command = kwargs.get('command')
-        splitCommand = shlex.split(command) if os.name == 'posix' else command.split(' ')
-    
+        splitCommand = command.split()  # split the command into a list of strings
+        
         if not command:
             error = "No command"
             return self.render_json(dict(success=False, payload=error)) 
         
         try:
-            output = subprocess.check_output(splitCommand, shell=True)
+            output = subprocess.check_output(splitCommand, shell=False)
             output = output.decode('utf-8')  # decode the bytes to a string
-        
+            
             if output:
                 payload = output
                 return self.render_json(dict(success=True, payload=payload))
