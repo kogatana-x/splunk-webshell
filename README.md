@@ -7,8 +7,10 @@
 2. Upload webShell.tar.gz 
 3. Rename the Application Name (if desired)
 4. Launch the webShell App 
-5. pwn'd! 
-[<img src="img.png">]
+5. pwn'd
+
+   
+[<img src="image.png">]
 
 ## Note: 
 The webshell is only accessible with an authorized login session. http://ur-ip:8000/en-US/app/webShell/terminal 
